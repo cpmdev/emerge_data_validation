@@ -7,11 +7,12 @@ module EMERGE
     #
     # Author::    Luke Rasmussen (mailto:luke.rasmussen@northwestern.edu)
     class DataDictionaryValidator < BaseValidator
-      EXPECTED_COLUMNS = ["VARNAME", "VARDESC", "TYPE", "UNITS", "MIN", "MAX", "REPEATED MEASURE", "REQUIRED", "COMMENT1", "VALUES"]
+      EXPECTED_COLUMNS = ["VARNAME", "VARDESC", "SOURCE", "TYPE", "UNITS", "MIN", "MAX", "REPEATED MEASURE", "REQUIRED", "COMMENT1", "VALUES"]
       REQUIRED_DATA_COLUMNS = ["VARNAME", "VARDESC", "TYPE", "REPEATED MEASURE", "REQUIRED"]
       COLUMN_VALIDATION_REGEX = [
         [/^[\S]*$/i, "Variable names should not contain spaces (including at the beginning or end of the variable name)"], #Varname
         nil, # Vardesc
+        nil, # source
         [/String|Decimal|Integer|Decimal, encoded value|Integer, encoded value|Encoded value|String, encoded value/i, "The variable type is not recognized"], # Type
         nil, # Units
         nil, # Min
